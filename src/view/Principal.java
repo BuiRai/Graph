@@ -63,7 +63,7 @@ public class Principal extends javax.swing.JFrame{
 
         jLabel1.setText("Nombre del nodo");
 
-        jTextField1.setText("Nombre");
+        jTextField1.setText("A");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel2.setText("Agregar nodo");
