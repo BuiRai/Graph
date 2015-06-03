@@ -39,5 +39,13 @@ public class Edge {
     public Node getNodeOut() {
         return nodeOut;
     }
+
+    @Override
+    public String toString() {
+        return "Edge{" + " valueEdge=" + valueEdge + ", nodeIn=" + nodeIn.getNameNode() + 
+                ", nodeOut=" + nodeOut.getNameNode() + '}';
+    }
+    
+    
     
 }

@@ -25,7 +25,7 @@ public class Graph {
     }
     
     public void addEdge(Edge edge){
-        edges.add(edge);   
+        edges.add(edge);
     }
     
     public Node foundNode(String nameNode){
@@ -40,18 +40,23 @@ public class Graph {
     }
     
     public void printInfoGraph(){
+        System.out.println("Nodes:");
         for (Node node : nodes) {
-            System.out.println(node + "\n");
+            System.out.print(node + "\n");
+        }
+        System.out.println("Edges:");
+        for (Edge edge : edges) {
+            System.out.print(edge + "\n");
         }
         System.out.println("-----------------------------------------------");
     }
     
-    public void buldAdjacencyMatrix(){
-        int numRows = nodes.size();
-        int [][] adjacencyMatrix = new int[numRows][numRows];
-        for (int i = 0; i < nodes.size(); i++) {
-            
-        }
+    public void printSizeEdges(){
+        System.out.println(edges.size());
+    }
+    
+    public void printNumbersOfEdges(){
+        System.out.println(edges.size());
     }
 
 }

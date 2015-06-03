@@ -13,12 +13,14 @@ import java.util.ArrayList;
  * @author crhistian
  */
 public class Node {
+    private int idNode;
     private String nameNode;
     private ArrayList<Edge> edges;
     private int axisX;
     private int axisY;
 
-    public Node(String nameNode, int axisX, int axisY) {
+    public Node(int idNode, String nameNode, int axisX, int axisY) {
+        this.idNode = idNode;
         this.nameNode = nameNode;
         edges = new ArrayList<>();
         this.axisX = axisX;
@@ -29,6 +31,10 @@ public class Node {
         this.nameNode = "node";
         this.axisX = 0;
         this.axisY = 0;
+    }
+    
+    public int getIdNode(){
+        return idNode;
     }
 
     public String getNameNode() {
@@ -49,8 +55,8 @@ public class Node {
 
     @Override
     public String toString() {
-        String info = "Node{" + "nameNode =" + nameNode + ", axisX =" + axisX + 
-                ", axisY =" + axisY + "}\nEdges: ";
+        String info = "Node{" + "ID = "+ idNode + ", nameNode = " + nameNode + 
+                ", axisX = " + axisX + ", axisY = " + axisY + "}::Edges: ";
         for (Edge edge : edges) {
             info += "{ Value: "+edge.getValueEdge()+" }";
         }

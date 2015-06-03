@@ -31,6 +31,7 @@ public class DrawArea extends Canvas implements MouseListener{
     private int currentAxisY;
     private String currentNameNode;
     private char abcLetter;
+    private int idNode;
     
     public DrawArea(){
         
@@ -45,6 +46,7 @@ public class DrawArea extends Canvas implements MouseListener{
         currentAxisY = 0;
         currentNameNode = "Name";
         abcLetter = 'A';
+        idNode = 0;
         setSize(680, 425);
         setBackground(Color.WHITE);
         printElementsFronPanelElement();
@@ -108,7 +110,8 @@ public class DrawArea extends Canvas implements MouseListener{
     
     private void addNode(){
         /*Add a node on this Canvas to paint*/
-        Node node = new Node(currentNameNode, currentAxisX, currentAxisY);
+        Node node = new Node(idNode, currentNameNode, currentAxisX, currentAxisY);
+        idNode++;
         nodes.add(node);
         /*Add a node to the clas Graph to made all the bussines logical*/
         controllerGraph.addNodeToGraph(node);
@@ -158,6 +161,7 @@ public class DrawArea extends Canvas implements MouseListener{
         currentNameNode = getCurrentNameOfNode();
         addNode();
         addNewNameToPanelElements();
+        controllerGraph.printInfoGraph();
         repaint();
     }
 

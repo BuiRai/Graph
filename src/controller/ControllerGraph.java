@@ -20,8 +20,8 @@ public class ControllerGraph {
         graph = new Graph();
     }
     
-    public void addNodeToGraph(String name, int axisX, int axisY){
-        Node node = new Node(name, axisX, axisY);
+    public void addNodeToGraph(int idNode, String name, int axisX, int axisY){
+        Node node = new Node(idNode, name, axisX, axisY);
         graph.addNode(node);
     }
     
@@ -45,6 +45,10 @@ public class ControllerGraph {
     
     public void printInfoGraph(){
         graph.printInfoGraph();
+    }
+    
+    public void imprimeNumeroDeAristas(){
+        graph.printNumbersOfEdges();
     }
     
 }
