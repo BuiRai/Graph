@@ -63,7 +63,7 @@ public class DrawArea extends Canvas implements MouseListener{
         
         /*Print all the edges on the Canvas*/
         for (Edge edge : edges) {
-            g.setColor(Color.GRAY);
+            g.setColor(Color.BLUE);
             Node nodeIn = edge.getNodeIn();
             Node nodeOut = edge.getNodeOut();
             /*The number 8 is for centering the ends of the edge, cause the diameter
