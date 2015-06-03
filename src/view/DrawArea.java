@@ -37,17 +37,17 @@ public class DrawArea extends Canvas implements MouseListener{
         
     }
     
-    public DrawArea(JPanel elementsPanel) {
+    public DrawArea(JPanel elementsPanel, ControllerGraph controllerGraph) {
         this.elementsPanel = elementsPanel;
         nodes = new ArrayList<>();
         edges = new ArrayList<>();
-        controllerGraph = new ControllerGraph();
+        this.controllerGraph = controllerGraph;
         currentAxisX = 0;
         currentAxisY = 0;
         currentNameNode = "Name";
         abcLetter = 'A';
         idNode = 0;
-        setSize(680, 425);
+        setSize(680, 250);
         setBackground(Color.WHITE);
         printElementsFronPanelElement();
         addMouseListener(this);
@@ -161,7 +161,6 @@ public class DrawArea extends Canvas implements MouseListener{
         currentNameNode = getCurrentNameOfNode();
         addNode();
         addNewNameToPanelElements();
-        controllerGraph.printInfoGraph();
         repaint();
     }
 

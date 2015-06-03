@@ -51,12 +51,27 @@ public class Graph {
         System.out.println("-----------------------------------------------");
     }
     
-    public void printSizeEdges(){
-        System.out.println(edges.size());
-    }
-    
-    public void printNumbersOfEdges(){
-        System.out.println(edges.size());
+    public void buildAdjacencyMatrix(){
+        int sizeMatrix = nodes.size();
+        int[][] adjacencyMatrix = new int[sizeMatrix][sizeMatrix];
+        
+        int numRow;
+        int numCol;
+        for (Edge edge : edges) {
+            numRow = edge.getNodeIn().getIdNode();
+            numCol = edge.getNodeOut().getIdNode();
+            
+            /*It also puts in reverse order because the adjacency matrix 
+            is symmetrical*/
+            adjacencyMatrix[numRow][numCol] = 1;
+            adjacencyMatrix[numCol][numRow] = 1;
+        }
+        for (int i = 0; i < sizeMatrix; i++) {
+            for (int j = 0; j < sizeMatrix; j++) {
+                System.out.print(adjacencyMatrix[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
     }
 
 }

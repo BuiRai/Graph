@@ -47,8 +47,8 @@ public class ControllerGraph {
         graph.printInfoGraph();
     }
     
-    public void imprimeNumeroDeAristas(){
-        graph.printNumbersOfEdges();
+    public void printAdjacencyMatrix(){
+        graph.buildAdjacencyMatrix();
     }
     
 }
