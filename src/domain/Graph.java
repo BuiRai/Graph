@@ -51,7 +51,7 @@ public class Graph {
         System.out.println("-----------------------------------------------");
     }
     
-    public void buildAdjacencyMatrix(){
+    public int[][] buildAdjacencyMatrix(){
         int sizeMatrix = nodes.size();
         int[][] adjacencyMatrix = new int[sizeMatrix][sizeMatrix];
         
@@ -72,6 +72,8 @@ public class Graph {
             }
             System.out.print("\n");
         }
+        
+        return adjacencyMatrix;
     }
 
 }

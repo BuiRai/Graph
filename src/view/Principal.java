@@ -53,6 +53,9 @@ public class Principal extends javax.swing.JFrame{
         jButton1 = new javax.swing.JButton();
         panelDraw = new javax.swing.JPanel();
         panelInfo = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        adjacencyMatrixText = new javax.swing.JTextArea();
+        btn_adjacencyMatrix = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grafos");
@@ -167,18 +170,33 @@ public class Principal extends javax.swing.JFrame{
             .addGap(0, 250, Short.MAX_VALUE)
         );
 
-        panelInfo.setBackground(new java.awt.Color(0, 0, 0));
+        adjacencyMatrixText.setEditable(false);
+        adjacencyMatrixText.setBackground(new java.awt.Color(51, 51, 51));
+        adjacencyMatrixText.setColumns(20);
+        adjacencyMatrixText.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        adjacencyMatrixText.setForeground(new java.awt.Color(102, 255, 102));
+        adjacencyMatrixText.setRows(5);
+        jScrollPane1.setViewportView(adjacencyMatrixText);
 
         javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
         panelInfo.setLayout(panelInfoLayout);
         panelInfoLayout.setHorizontalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
         );
         panelInfoLayout.setVerticalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        btn_adjacencyMatrix.setText("Matriz de adyacencia");
+        btn_adjacencyMatrix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showAdjacencyMatrix(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,21 +208,28 @@ public class Principal extends javax.swing.JFrame{
                     .addComponent(panelOption, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelDraw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_adjacencyMatrix)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(panelOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_adjacencyMatrix)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -217,6 +242,11 @@ public class Principal extends javax.swing.JFrame{
         drawArea.addEdge(valueCurrentEdge, nameCurrentNodeIn, nameCurrentNodeOut);
         drawArea.repaint();
     }//GEN-LAST:event_addEdge
+
+    private void showAdjacencyMatrix(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAdjacencyMatrix
+        String adjacencyMatrix = controllerGraph.getAdjacencyMatrix();
+        adjacencyMatrixText.setText(adjacencyMatrix);
+    }//GEN-LAST:event_showAdjacencyMatrix
 
     /**
      * @param args the command line arguments
@@ -254,6 +284,8 @@ public class Principal extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea adjacencyMatrixText;
+    private javax.swing.JButton btn_adjacencyMatrix;
     private javax.swing.ButtonGroup element;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -262,6 +294,7 @@ public class Principal extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nameNode1;
     private javax.swing.JTextField nameNode2;

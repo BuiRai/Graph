@@ -47,8 +47,16 @@ public class ControllerGraph {
         graph.printInfoGraph();
     }
     
-    public void printAdjacencyMatrix(){
-        graph.buildAdjacencyMatrix();
+    public String getAdjacencyMatrix(){
+        String adjacencyMatrix = "";
+        int[][] adjacencyMatrix_i = graph.buildAdjacencyMatrix();
+        for (int i = 0; i < adjacencyMatrix_i.length; i++) {
+            for (int j = 0; j < adjacencyMatrix_i.length; j++) {
+                adjacencyMatrix += adjacencyMatrix_i[i][j] + " ";
+            }
+            adjacencyMatrix += "\n";
+        }
+        return adjacencyMatrix;
     }
     
 }
