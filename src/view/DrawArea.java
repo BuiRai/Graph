@@ -30,6 +30,7 @@ public class DrawArea extends Canvas implements MouseListener{
     private int currentAxisX;
     private int currentAxisY;
     private String currentNameNode;
+    private char abcLetter;
     
     public DrawArea(){
         
@@ -43,6 +44,7 @@ public class DrawArea extends Canvas implements MouseListener{
         currentAxisX = 0;
         currentAxisY = 0;
         currentNameNode = "Name";
+        abcLetter = 'A';
         setSize(680, 425);
         setBackground(Color.WHITE);
         printElementsFronPanelElement();
@@ -54,7 +56,7 @@ public class DrawArea extends Canvas implements MouseListener{
         /*Print all the nodes on the Canvas*/
         for (Node node : nodes) {
             g.setColor(Color.GREEN);
-            g.fillOval(node.getAxisX(), node.getAxisY(), 15, 15);
+            g.fillOval(node.getAxisX(), node.getAxisY(), 16, 16);
             g.setColor(Color.BLACK);
             g.drawString(node.getNameNode(), node.getAxisX(), node.getAxisY());
         }
@@ -64,10 +66,28 @@ public class DrawArea extends Canvas implements MouseListener{
             g.setColor(Color.BLACK);
             Node nodeIn = edge.getNodeIn();
             Node nodeOut = edge.getNodeOut();
-            g.drawLine(nodeIn.getAxisX(), nodeIn.getAxisY(),
-                nodeOut.getAxisX(), nodeOut.getAxisY());
+            /*The number 8 is for centering the ends of the edge, cause the diameter
+            of a node is 16.*/
+            g.drawLine(nodeIn.getAxisX()+8, nodeIn.getAxisY()+8,
+                nodeOut.getAxisX()+8, nodeOut.getAxisY()+8);
+            
+            /*Escribir el peso de la arista*/
+            String valueEdge = String.valueOf(edge.getValueEdge());
+            int[] coordenates = getNewCoordenates(nodeIn, nodeOut);
+            int axisX = coordenates[0];
+            int axisY = coordenates[1];
+            g.drawString(valueEdge, axisX, axisY);
         }
         
+    }
+    
+    public int[] getNewCoordenates(Node first, Node second){
+        int middleX = (int)((first.getAxisX()+second.getAxisX())/2);
+        int middleY = (int)((first.getAxisY()+second.getAxisY())/2);
+        int coordenates[] = new int[2];
+        coordenates[0] = middleX;
+        coordenates[1] = middleY;
+        return coordenates;
     }
     
     private void printElementsFronPanelElement(){
@@ -114,6 +134,16 @@ public class DrawArea extends Canvas implements MouseListener{
         /*Add a node to the clas Graph to made all the bussines logical*/
         controllerGraph.addEdgeToGraph(edge);
     }
+    
+    public void addNewNameToPanelElements(){
+        int currentLetter = (int)abcLetter;
+        currentLetter++;
+        int nextLetter_i = currentLetter;
+        abcLetter = (char)nextLetter_i;
+        String nextLetter_s = String.valueOf(abcLetter);
+        JTextField textField = (JTextField)elementsPanel.getComponent(1);
+        textField.setText(nextLetter_s);
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -121,6 +151,7 @@ public class DrawArea extends Canvas implements MouseListener{
         currentAxisY = e.getY();
         currentNameNode = getCurrentNameOfNode();
         addNode();
+        addNewNameToPanelElements();
         repaint();
     }
 
