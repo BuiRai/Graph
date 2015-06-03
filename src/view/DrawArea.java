@@ -132,8 +132,13 @@ public class DrawArea extends Canvas implements MouseListener{
         Node nodeOut = foundNode(nameNodeOut);
         Edge edge = new Edge(valueEdge, nodeIn, nodeOut);
         edges.add(edge);
+        
         /*Add a node to the clas Graph to made all the bussines logical*/
         controllerGraph.addEdgeToGraph(edge);
+        
+        /*Agregar la arista a cada nodo que toca*/
+        controllerGraph.addEdgeToNode(nameNodeIn, edge);
+        controllerGraph.addEdgeToNode(nameNodeOut, edge);
     }
     
     public void addNewNameToPanelElements(){

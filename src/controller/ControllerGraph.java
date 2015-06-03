@@ -38,5 +38,14 @@ public class ControllerGraph {
         graph.addEdge(edge);
     }
     
+    public void addEdgeToNode(String nameNode, Edge edge){
+        Node node = graph.foundNode(nameNode);
+        node.addEdgeToNode(edge);
+    }
+    
+    public void printInfoGraph(){
+        graph.printInfoGraph();
+    }
+    
 }
 
