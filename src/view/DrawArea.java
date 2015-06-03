@@ -63,7 +63,7 @@ public class DrawArea extends Canvas implements MouseListener{
         
         /*Print all the edges on the Canvas*/
         for (Edge edge : edges) {
-            g.setColor(Color.BLACK);
+            g.setColor(Color.GRAY);
             Node nodeIn = edge.getNodeIn();
             Node nodeOut = edge.getNodeOut();
             /*The number 8 is for centering the ends of the edge, cause the diameter
@@ -72,6 +72,7 @@ public class DrawArea extends Canvas implements MouseListener{
                 nodeOut.getAxisX()+8, nodeOut.getAxisY()+8);
             
             /*Escribir el peso de la arista*/
+            g.setColor(Color.BLACK);
             String valueEdge = String.valueOf(edge.getValueEdge());
             int[] coordenates = getNewCoordenates(nodeIn, nodeOut);
             int axisX = coordenates[0];
