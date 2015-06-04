@@ -15,6 +15,11 @@ public class Graph {
     private ArrayList<Node> nodes;
     private ArrayList<Edge> edges;
 
+    public Graph(ArrayList<Node> nodes, ArrayList<Edge> edges){
+        this.nodes = nodes;
+        this.edges = edges;
+    }
+    
     public Graph() {
         nodes = new ArrayList<>();
         edges = new ArrayList<>();
@@ -26,6 +31,14 @@ public class Graph {
     
     public void addEdge(Edge edge){
         edges.add(edge);
+    }
+
+    public ArrayList<Node> getNodes() {
+        return nodes;
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
     }
     
     public Node foundNode(String nameNode){

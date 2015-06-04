@@ -17,6 +17,13 @@ public class Edge {
 
     public Edge() {
     }
+    
+    public Edge(String nameEdge, int valueEdge, Node nodeIn, Node nodeOut) {
+        this.nameEdge = nameEdge;
+        this.valueEdge = valueEdge;
+        this.nodeIn = nodeIn;
+        this.nodeOut = nodeOut;
+    }
 
     public Edge(int valueEdge, Node nodeIn, Node nodeOut) {
         this.valueEdge = valueEdge;
