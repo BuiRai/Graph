@@ -6,8 +6,10 @@
 package controller;
 
 import domain.Edge;
+import domain.Exporter;
 import domain.Graph;
 import domain.Node;
+import java.awt.Canvas;
 
 /**
  *
@@ -15,9 +17,11 @@ import domain.Node;
  */
 public class ControllerGraph {
     private Graph graph;
+    private Exporter exporter;
 
     public ControllerGraph() {
         graph = new Graph();
+        exporter = new Exporter();
     }
     
     public void addNodeToGraph(int idNode, String name, int axisX, int axisY){
@@ -64,6 +68,10 @@ public class ControllerGraph {
         Node nodeOut = graph.foundNode(nameNodeOut);
         String shortenedPath = graph.getShortenedPath(nodeIn, nodeOut);
         return shortenedPath;
+    }
+    
+    public void exportGraphToPNG(Canvas canvas){
+        exporter.saveImageToPNG(canvas);
     }
     
 }
