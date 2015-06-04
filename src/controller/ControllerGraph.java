@@ -59,5 +59,12 @@ public class ControllerGraph {
         return adjacencyMatrix;
     }
     
+    public String getShortenedPath(String nameNodeIn, String nameNodeOut){
+        Node nodeIn = graph.foundNode(nameNodeIn);
+        Node nodeOut = graph.foundNode(nameNodeOut);
+        String shortenedPath = graph.getShortenedPath(nodeIn, nodeOut);
+        return shortenedPath;
+    }
+    
 }
 

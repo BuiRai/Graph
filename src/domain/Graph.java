@@ -6,6 +6,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -85,8 +86,20 @@ public class Graph {
             }
             System.out.print("\n");
         }
-        
         return adjacencyMatrix;
+    }
+    
+    public String getShortenedPath(Node nodeIn, Node nodeOut){
+        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(this);
+        dijkstra.execute(nodeIn);
+        LinkedList<Node> path = dijkstra.getPath(nodeOut);
+        
+        String shortenestPath = "";
+        for (Node vertex : path) {
+            shortenestPath += vertex.getNameNode()+"  -> ";
+        }
+        
+        return shortenestPath;
     }
 
 }

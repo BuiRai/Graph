@@ -53,9 +53,16 @@ public class Principal extends javax.swing.JFrame{
         jButton1 = new javax.swing.JButton();
         panelDraw = new javax.swing.JPanel();
         panelInfo = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        adjacencyMatrixText = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        adjacencyMatrixText1 = new javax.swing.JTextArea();
         btn_adjacencyMatrix = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textShortenedPath = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        nameNodeIn = new javax.swing.JTextField();
+        nameNodeOut = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grafos");
@@ -170,25 +177,29 @@ public class Principal extends javax.swing.JFrame{
             .addGap(0, 250, Short.MAX_VALUE)
         );
 
-        adjacencyMatrixText.setEditable(false);
-        adjacencyMatrixText.setBackground(new java.awt.Color(51, 51, 51));
-        adjacencyMatrixText.setColumns(20);
-        adjacencyMatrixText.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        adjacencyMatrixText.setForeground(new java.awt.Color(102, 255, 102));
-        adjacencyMatrixText.setRows(5);
-        jScrollPane1.setViewportView(adjacencyMatrixText);
+        adjacencyMatrixText1.setEditable(false);
+        adjacencyMatrixText1.setBackground(new java.awt.Color(51, 51, 51));
+        adjacencyMatrixText1.setColumns(20);
+        adjacencyMatrixText1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        adjacencyMatrixText1.setForeground(new java.awt.Color(102, 255, 102));
+        adjacencyMatrixText1.setRows(5);
+        jScrollPane2.setViewportView(adjacencyMatrixText1);
 
         javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
         panelInfo.setLayout(panelInfoLayout);
         panelInfoLayout.setHorizontalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelInfoLayout.setVerticalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInfoLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         btn_adjacencyMatrix.setText("Matriz de adyacencia");
@@ -198,16 +209,49 @@ public class Principal extends javax.swing.JFrame{
             }
         });
 
+        textShortenedPath.setEditable(false);
+        textShortenedPath.setBackground(new java.awt.Color(51, 51, 51));
+        textShortenedPath.setColumns(20);
+        textShortenedPath.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        textShortenedPath.setForeground(new java.awt.Color(102, 255, 102));
+        textShortenedPath.setRows(5);
+        jScrollPane1.setViewportView(textShortenedPath);
+
+        jButton2.setText("Mostrar camino más corto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shortenedPath(evt);
+            }
+        });
+
+        jLabel7.setText("Nodo fuente");
+
+        jLabel8.setText("Nodo destino");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelOption, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDraw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelOption, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelDraw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameNodeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nameNodeOut, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -218,18 +262,27 @@ public class Principal extends javax.swing.JFrame{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(panelOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_adjacencyMatrix)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel7)
+                            .addComponent(nameNodeIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(nameNodeOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,8 +298,15 @@ public class Principal extends javax.swing.JFrame{
 
     private void showAdjacencyMatrix(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAdjacencyMatrix
         String adjacencyMatrix = controllerGraph.getAdjacencyMatrix();
-        adjacencyMatrixText.setText(adjacencyMatrix);
+        adjacencyMatrixText1.setText(adjacencyMatrix);
     }//GEN-LAST:event_showAdjacencyMatrix
+
+    private void shortenedPath(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shortenedPath
+        String nameSource = nameNodeIn.getText();
+        String nameDestiny = nameNodeOut.getText();
+        String shortenedPath = controllerGraph.getShortenedPath(nameSource, nameDestiny);
+        textShortenedPath.setText(shortenedPath);
+    }//GEN-LAST:event_shortenedPath
 
     /**
      * @param args the command line arguments
@@ -284,24 +344,31 @@ public class Principal extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea adjacencyMatrixText;
+    private javax.swing.JTextArea adjacencyMatrixText1;
     private javax.swing.JButton btn_adjacencyMatrix;
     private javax.swing.ButtonGroup element;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nameNode1;
     private javax.swing.JTextField nameNode2;
+    private javax.swing.JTextField nameNodeIn;
+    private javax.swing.JTextField nameNodeOut;
     private javax.swing.JPanel panelDraw;
     private javax.swing.JPanel panelInfo;
     private javax.swing.JPanel panelOption;
     private javax.swing.JSeparator separator;
+    private javax.swing.JTextArea textShortenedPath;
     private javax.swing.JTextField valueEdge;
     // End of variables declaration//GEN-END:variables
 
