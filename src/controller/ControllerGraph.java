@@ -74,5 +74,9 @@ public class ControllerGraph {
         exporter.saveImageToPNG(canvas);
     }
     
+    public void showCircuitEuler(){
+        graph.getEulerCircuit();
+    }
+    
 }
 

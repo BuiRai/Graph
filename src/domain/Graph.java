@@ -101,5 +101,12 @@ public class Graph {
         
         return shortenestPath;
     }
+    
+    public void getEulerCircuit(){
+        int numberOfNodes = nodes.size();
+        int[][] adjacencyMatrix = buildAdjacencyMatrix();
+        EulerCircuit eulerCircuit = new EulerCircuit(numberOfNodes, adjacencyMatrix);
+        eulerCircuit.printEulerTour();
+    }
 
 }

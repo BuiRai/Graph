@@ -64,6 +64,7 @@ public class Principal extends javax.swing.JFrame{
         nameNodeOut = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        eulerCircuit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grafos");
@@ -236,6 +237,13 @@ public class Principal extends javax.swing.JFrame{
             }
         });
 
+        eulerCircuit.setText("Circuito de Euler");
+        eulerCircuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showEulerCircuit(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -265,7 +273,8 @@ public class Principal extends javax.swing.JFrame{
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_adjacencyMatrix)
-                            .addComponent(jButton3))
+                            .addComponent(jButton3)
+                            .addComponent(eulerCircuit))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -293,7 +302,9 @@ public class Principal extends javax.swing.JFrame{
                         .addComponent(nameNodeIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eulerCircuit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,6 +334,10 @@ public class Principal extends javax.swing.JFrame{
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         controllerGraph.exportGraphToPNG(drawArea);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void showEulerCircuit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showEulerCircuit
+        controllerGraph.showCircuitEuler();
+    }//GEN-LAST:event_showEulerCircuit
 
     /**
      * @param args the command line arguments
@@ -363,6 +378,7 @@ public class Principal extends javax.swing.JFrame{
     private javax.swing.JTextArea adjacencyMatrixText1;
     private javax.swing.JButton btn_adjacencyMatrix;
     private javax.swing.ButtonGroup element;
+    private javax.swing.JButton eulerCircuit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
