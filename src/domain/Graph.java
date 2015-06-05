@@ -80,12 +80,7 @@ public class Graph {
             adjacencyMatrix[numRow][numCol] = 1;
             adjacencyMatrix[numCol][numRow] = 1;
         }
-        for (int i = 0; i < sizeMatrix; i++) {
-            for (int j = 0; j < sizeMatrix; j++) {
-                System.out.print(adjacencyMatrix[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
+        
         return adjacencyMatrix;
     }
     
