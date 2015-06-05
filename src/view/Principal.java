@@ -65,6 +65,7 @@ public class Principal extends javax.swing.JFrame{
         jLabel8 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         eulerCircuit = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grafos");
@@ -244,6 +245,13 @@ public class Principal extends javax.swing.JFrame{
             }
         });
 
+        jButton4.setText("Circuito de Hamilton");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showHamiltonCircuit(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -274,7 +282,8 @@ public class Principal extends javax.swing.JFrame{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_adjacencyMatrix)
                             .addComponent(jButton3)
-                            .addComponent(eulerCircuit))
+                            .addComponent(eulerCircuit)
+                            .addComponent(jButton4))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -304,7 +313,10 @@ public class Principal extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eulerCircuit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(eulerCircuit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -338,6 +350,10 @@ public class Principal extends javax.swing.JFrame{
     private void showEulerCircuit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showEulerCircuit
         controllerGraph.showCircuitEuler();
     }//GEN-LAST:event_showEulerCircuit
+
+    private void showHamiltonCircuit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHamiltonCircuit
+        controllerGraph.showCircuitHamilton();
+    }//GEN-LAST:event_showHamiltonCircuit
 
     /**
      * @param args the command line arguments
@@ -382,6 +398,7 @@ public class Principal extends javax.swing.JFrame{
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -78,5 +78,9 @@ public class ControllerGraph {
         graph.getEulerCircuit();
     }
     
+    public void showCircuitHamilton(){
+        graph.getHamiltonCircuit();
+    }
+    
 }
 

@@ -108,5 +108,11 @@ public class Graph {
         EulerCircuit eulerCircuit = new EulerCircuit(numberOfNodes, adjacencyMatrix);
         eulerCircuit.printEulerTour();
     }
+    
+    public void getHamiltonCircuit(){
+        int[][] adjacencyMatrx = buildAdjacencyMatrix();
+        HamiltonCircuit hamiltonCircuit = new HamiltonCircuit();
+        hamiltonCircuit.findHamiltonianCycle(adjacencyMatrx);
+    }
 
 }
