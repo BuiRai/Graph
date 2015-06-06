@@ -97,11 +97,25 @@ public class Graph {
         return shortenestPath;
     }
     
-    public void getEulerCircuit(){
+    public String getEulerCircuit(){
+        ArrayList nodesPath = new ArrayList();
         int numberOfNodes = nodes.size();
         int[][] adjacencyMatrix = buildAdjacencyMatrix();
+        String informationEuler = "";
         EulerCircuit eulerCircuit = new EulerCircuit(numberOfNodes, adjacencyMatrix);
-        eulerCircuit.printEulerTour();
+        nodesPath = eulerCircuit.printEulerTour();
+        System.out.println("EL MIO: JOJOJOJ");
+        for (int i = 0; i < nodesPath.size(); i++) {
+            String nodeSource = "Fuente: " + 
+                    nodes.get((int)nodesPath.get(i)).getNameNode() + " --> ";
+            System.out.print(nodeSource);
+            i++;
+            String nodeDestiny = "Destino: " + 
+                    nodes.get((int)nodesPath.get(i)).getNameNode() + "\n";
+            System.out.print(nodeDestiny);
+            informationEuler = informationEuler + nodeSource + nodeDestiny;
+        }
+        return informationEuler;
     }
     
     public String getHamiltonCircuit(){

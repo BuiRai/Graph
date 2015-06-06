@@ -5,6 +5,8 @@
  */
 package domain;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crhistian
@@ -12,10 +14,12 @@ package domain;
 public class EulerCircuit {
     private int[][] adjacencyMatrix;
     private int numberOfNodes; 
+    private ArrayList nodesPath;
  
     public EulerCircuit (int numberOfNodes, int[][] adjacencyMatrix){
         this.numberOfNodes = numberOfNodes;
         this.adjacencyMatrix = new int[numberOfNodes + 1] [numberOfNodes + 1];
+        nodesPath = new ArrayList();
         for (int sourceVertex = 1; sourceVertex <= numberOfNodes; sourceVertex++){
             for (int destinationVertex = 1; destinationVertex <= numberOfNodes; destinationVertex++){
                 this.adjacencyMatrix[sourceVertex][destinationVertex]
@@ -46,24 +50,35 @@ public class EulerCircuit {
         return vertex;
     }
  
-    public void printEulerTourUtil (int vertex){
+    public ArrayList printEulerTourUtil (int vertex){
+        
         for (int destination = 1; destination <= numberOfNodes; destination++){
             if(adjacencyMatrix[vertex][destination] == 1 && 
                     isVaildNextEdge(vertex, destination)){
                 System.out.println(" source : " + vertex + " destination " + destination);
+                /*El -1 es porque esta clase comienza a contar desde 1 y no 
+                desde 0*/
+                nodesPath.add(vertex-1);
+                nodesPath.add(destination-1);
                 removeEdge(vertex, destination);
                 printEulerTourUtil(destination);
             }	
         }
+        System.out.println("printEulerTourUtil");
+        System.out.println(nodesPath);
+        return nodesPath;
     }
  
-    public void printEulerTour (){
+    public ArrayList printEulerTour (){
+        ArrayList listOfNodes = new ArrayList();
         int vertex = 1;
         if (oddDegreeVertex() != -1){
             vertex = oddDegreeVertex();
         }
-        printEulerTourUtil(vertex);
-        return;
+        listOfNodes = printEulerTourUtil(vertex);
+        System.out.println("En printEulerTour");
+        System.out.println(listOfNodes);
+        return listOfNodes;
     }
  
     public boolean isVaildNextEdge (int source, int destination){
