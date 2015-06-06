@@ -19,30 +19,20 @@ import javax.imageio.ImageIO;
  * @author crhistian
  */
 public class Exporter extends Canvas{
-    Canvas canvas;
-    public Exporter() {
-        canvas = new Canvas();
-    }
     
-    @Override
-    public void paint(Graphics g) {
-	Graphics2D g2=(Graphics2D)g;
-	g2.setBackground(Color.WHITE);
-	g2.clearRect(0, 0, this.getWidth(), this.getHeight());
-	g2.setColor(Color.BLACK);
-	g2.drawString("Draw a rectangle", 100,100);
-	g2.drawRect(100,200,50,50);
+    public Exporter() {
+        
     }
     
     public void saveImageToPNG(Canvas canvas){
-        this.canvas = canvas;
-        BufferedImage image = new BufferedImage(this.canvas.getWidth(), 
-                this.canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
+        canvas.setBackground(Color.WHITE);
+        BufferedImage image = new BufferedImage(canvas.getWidth(), 
+                canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 =(Graphics2D)image.getGraphics();
         
         //Graphics2D g2 =(Graphics2D)image.getGraphics();
         System.out.println("hola2");
-	this.canvas.paint(g2);
+	canvas.paint(g2);
         System.out.println("hola3");
 	try {
             

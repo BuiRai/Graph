@@ -186,6 +186,11 @@ public class Principal extends javax.swing.JFrame{
         jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Exportar grafo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportGraph(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -253,6 +258,10 @@ public class Principal extends javax.swing.JFrame{
         OperationsOfGraph operationsGraph = new OperationsOfGraph(controllerGraph);
         operationsGraph.setVisible(true);
     }//GEN-LAST:event_showOperations
+
+    private void exportGraph(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportGraph
+        controllerGraph.exportGraphToPNG(drawArea);
+    }//GEN-LAST:event_exportGraph
 
     /**
      * @param args the command line arguments
