@@ -104,10 +104,16 @@ public class Graph {
         eulerCircuit.printEulerTour();
     }
     
-    public void getHamiltonCircuit(){
+    public String getHamiltonCircuit(){
+        String nodesPath = "";
+        ArrayList nodesHamilton = new ArrayList();
         int[][] adjacencyMatrx = buildAdjacencyMatrix();
         HamiltonCircuit hamiltonCircuit = new HamiltonCircuit();
-        hamiltonCircuit.findHamiltonianCycle(adjacencyMatrx);
+        nodesHamilton = hamiltonCircuit.findHamiltonianCycle(adjacencyMatrx);
+        for (Object idNode : nodesHamilton) {
+            nodesPath += this.nodes.get((int)idNode).getNameNode() +  " -> ";
+        }
+        return nodesPath;
     }
 
 }

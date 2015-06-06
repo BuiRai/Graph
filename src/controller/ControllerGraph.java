@@ -78,8 +78,9 @@ public class ControllerGraph {
         graph.getEulerCircuit();
     }
     
-    public void showCircuitHamilton(){
-        graph.getHamiltonCircuit();
+    public String showCircuitHamilton(){
+        String nodesPath = graph.getHamiltonCircuit();
+        return nodesPath;
     }
     
 }

@@ -236,7 +236,8 @@ public class OperationsOfGraph extends javax.swing.JFrame {
     }//GEN-LAST:event_showEulerCircuit
 
     private void showHamiltonCircuit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHamiltonCircuit
-        controllerGraph.showCircuitHamilton();
+        String nodesPath = controllerGraph.showCircuitHamilton();
+        hamiltonCircuitArea.setText(nodesPath);
     }//GEN-LAST:event_showHamiltonCircuit
 
     private void showShortenedPath(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showShortenedPath

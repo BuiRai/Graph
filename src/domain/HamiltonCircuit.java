@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -16,8 +17,11 @@ public class HamiltonCircuit {
     private int[] path;     
     private int[][] graph;
  
-    /** Function to find cycle **/
-    public void findHamiltonianCycle(int[][] g){
+    /** Function to find cycle
+     * @param g the matrix
+     * @return  **/
+    public ArrayList findHamiltonianCycle(int[][] g){
+        ArrayList nodes = new ArrayList();
         V = g.length;
         path = new int[V];
  
@@ -31,8 +35,9 @@ public class HamiltonCircuit {
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-            display();
+            nodes = display();
         }
+        return nodes;
     }
     /** function to find paths recursively **/
     public void solve(int vertex) throws Exception{
@@ -73,11 +78,17 @@ public class HamiltonCircuit {
                 return true;
         return false;                
     }
-    /** display solution **/
-    public void display(){
-        System.out.print("\nPath : ");
-        for (int i = 0; i <= V; i++)
+    
+    /** display solution
+     * @return  Array of nodes**/
+    public ArrayList display(){
+        ArrayList nodes = new ArrayList();
+        for (int i = 0; i <= V; i++){
             System.out.print(path[i % V] +" ");
-        System.out.println();
+            nodes.add(i%V);
+            
+        }
+        System.out.println("Clase circuito: "+nodes);
+        return nodes;
     }     
 }
