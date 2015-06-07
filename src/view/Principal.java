@@ -6,6 +6,7 @@
 package view;
 
 import controller.ControllerGraph;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -242,13 +243,30 @@ public class Principal extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void addEdge(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEdge
-        int valueCurrentEdge = Integer.parseInt(this.valueEdge.getText());
-        String nameCurrentNodeIn = this.nameNode1.getText();
-        String nameCurrentNodeOut = this.nameNode2.getText();
-        drawArea.addEdge(valueCurrentEdge, nameCurrentNodeIn, nameCurrentNodeOut);
-        drawArea.repaint();
+        try{
+            int valueCurrentEdge = Integer.parseInt(this.valueEdge.getText());
+            String nameCurrentNodeIn = this.nameNode1.getText();
+            String nameCurrentNodeOut = this.nameNode2.getText();
+            if (controllerGraph.foundEdge(nameCurrentNodeIn ) ||
+                    controllerGraph.foundEdge(nameCurrentNodeOut)) {
+                drawArea.addEdge(valueCurrentEdge, nameCurrentNodeIn, 
+                        nameCurrentNodeOut);
+            }else{
+                JOptionPane.showMessageDialog(this, 
+                    "Uno de los nodos no existe, ingrese uno existente", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+            }
+            drawArea.repaint();
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, 
+                    "Debes ingresar un numero entero en el peso de la arista", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_addEdge
-
+    
+    
+    
     private void showWindowOperatons(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showWindowOperatons
         AdjacencyMatrix operationsGraph = new AdjacencyMatrix(controllerGraph);
         operationsGraph.setVisible(true);

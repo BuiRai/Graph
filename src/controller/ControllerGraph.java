@@ -33,6 +33,11 @@ public class ControllerGraph {
         graph.addNode(node);
     }
     
+    public boolean foundEdge(String nameNode){
+        Node node = graph.foundNode(nameNode);
+        return node != null;
+    }
+    
     public void addEdgeToGraph(int valueEdge, Node nodeIn, Node nodeOut){
         Edge edge = new Edge(valueEdge, nodeIn, nodeOut);
         graph.addEdge(edge);
