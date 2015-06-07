@@ -55,6 +55,11 @@ public class DrawArea extends Canvas implements MouseListener{
     
     @Override
     public void paint(Graphics g) {
+        paintNodes(g);
+        paintEdges(g);
+    }
+    
+    public void paintNodes(Graphics g){
         /*Print all the nodes on the Canvas*/
         for (Node node : nodes) {
             g.setColor(Color.GREEN);
@@ -62,7 +67,9 @@ public class DrawArea extends Canvas implements MouseListener{
             g.setColor(Color.BLACK);
             g.drawString(node.getNameNode(), node.getAxisX(), node.getAxisY());
         }
-        
+    }
+    
+    public void paintEdges(Graphics g){
         /*Print all the edges on the Canvas*/
         for (Edge edge : edges) {
             g.setColor(Color.BLUE);
@@ -73,6 +80,13 @@ public class DrawArea extends Canvas implements MouseListener{
             g.drawLine(nodeIn.getAxisX()+8, nodeIn.getAxisY()+8,
                 nodeOut.getAxisX()+8, nodeOut.getAxisY()+8);
             
+            /*To draw the arrows*/
+//            g.drawLine(nodeOut.getAxisX()+8, nodeOut.getAxisY()+8, 
+//                    nodeOut.getAxisX()+8, nodeOut.getAxisY()+8-15);
+//            g.drawLine(nodeOut.getAxisX()+8, nodeOut.getAxisY()+8, 
+//                    nodeOut.getAxisX()+8-15, nodeOut.getAxisY()+8);
+            
+            
             /*Escribir el peso de la arista*/
             g.setColor(Color.BLACK);
             String valueEdge = String.valueOf(edge.getValueEdge());
@@ -81,7 +95,6 @@ public class DrawArea extends Canvas implements MouseListener{
             int axisY = coordenates[1];
             g.drawString(valueEdge, axisX, axisY);
         }
-        
     }
     
     public int[] getNewCoordenates(Node first, Node second){
