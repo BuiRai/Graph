@@ -247,7 +247,7 @@ public class Principal extends javax.swing.JFrame{
             int valueCurrentEdge = Integer.parseInt(this.valueEdge.getText());
             String nameCurrentNodeIn = this.nameNode1.getText();
             String nameCurrentNodeOut = this.nameNode2.getText();
-            if (controllerGraph.foundEdge(nameCurrentNodeIn ) ||
+            if (controllerGraph.foundEdge(nameCurrentNodeIn ) &&
                     controllerGraph.foundEdge(nameCurrentNodeOut)) {
                 drawArea.addEdge(valueCurrentEdge, nameCurrentNodeIn, 
                         nameCurrentNodeOut);

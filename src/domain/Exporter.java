@@ -25,7 +25,7 @@ public class Exporter extends Canvas{
     }
     
     public void saveImageToPNG(Canvas canvas){
-        canvas.setBackground(Color.WHITE);
+        
         BufferedImage image = new BufferedImage(canvas.getWidth(), 
                 canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 =(Graphics2D)image.getGraphics();

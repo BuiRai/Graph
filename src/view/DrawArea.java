@@ -75,25 +75,33 @@ public class DrawArea extends Canvas implements MouseListener{
             g.setColor(Color.CYAN);
             Node nodeIn = edge.getNodeIn();
             Node nodeOut = edge.getNodeOut();
-            /*The number 8 is for centering the ends of the edge, cause the diameter
-            of a node is 16.*/
-            g.drawLine(nodeIn.getAxisX()+8, nodeIn.getAxisY()+8,
-                nodeOut.getAxisX()+8, nodeOut.getAxisY()+8);
-            
-            /*To draw the arrows*/
-//            g.drawLine(nodeOut.getAxisX()+8, nodeOut.getAxisY()+8, 
-//                    nodeOut.getAxisX()+8, nodeOut.getAxisY()+8-15);
-//            g.drawLine(nodeOut.getAxisX()+8, nodeOut.getAxisY()+8, 
-//                    nodeOut.getAxisX()+8-15, nodeOut.getAxisY()+8);
-            
-            
-            /*Escribir el peso de la arista*/
-            g.setColor(Color.WHITE);
-            String valueEdge = String.valueOf(edge.getValueEdge());
-            int[] coordenates = getNewCoordenates(nodeIn, nodeOut);
-            int axisX = coordenates[0];
-            int axisY = coordenates[1];
-            g.drawString(valueEdge, axisX, axisY);
+            /*Si no es un lazo*/
+            if (edge.getNodeIn() != edge.getNodeOut()) {
+//              Node nodeIn = edge.getNodeIn();
+                g.drawLine(nodeIn.getAxisX()+8, nodeIn.getAxisY()+8,
+                    nodeOut.getAxisX()+8, nodeOut.getAxisY()+8);
+
+                /*Escribir el peso de la arista*/
+                g.setColor(Color.WHITE);
+                String valueEdge = String.valueOf(edge.getValueEdge());
+                int[] coordenates = getNewCoordenates(nodeIn, nodeOut);
+                int axisX = coordenates[0];
+                int axisY = coordenates[1];
+                g.drawString(valueEdge, axisX, axisY);
+                
+            /*Si es un lazo*/
+            }else{
+//                Node nodeIn = edge.getNodeIn();
+//                Node nodeOut = edge.getNodeOut();
+                /*The number 8 is for centering the ends of the edge, cause the diameter
+                of a node is 16.*/
+                g.drawOval(nodeIn.getAxisX()-30, nodeIn.getAxisY()-5, 45, 25);
+                
+                /*Escribir el peso de la arista*/
+                g.setColor(Color.WHITE);
+                String valueEdge = String.valueOf(edge.getValueEdge());
+                g.drawString(valueEdge, nodeIn.getAxisX()-40, nodeIn.getAxisY()+10);
+            }
         }
     }
     
