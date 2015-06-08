@@ -6,12 +6,9 @@
 package domain;
 
 import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import javax.imageio.ImageIO;
 
 /**
@@ -24,8 +21,8 @@ public class Exporter extends Canvas{
         
     }
     
-    public void saveImageToPNG(Canvas canvas){
-        
+    public boolean saveImageToPNG(Canvas canvas){
+        boolean saveSucces = false;
         BufferedImage image = new BufferedImage(canvas.getWidth(), 
                 canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 =(Graphics2D)image.getGraphics();
@@ -35,11 +32,12 @@ public class Exporter extends Canvas{
 	canvas.paint(g2);
         System.out.println("hola3");
 	try {
-            
             ImageIO.write(image, "png", new File("canvas.png"));
+            saveSucces = true;
 	} catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
 	}
+        return saveSucces;
     }
     
 }

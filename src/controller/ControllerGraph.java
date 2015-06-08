@@ -75,8 +75,9 @@ public class ControllerGraph {
         return shortenedPath;
     }
     
-    public void exportGraphToPNG(Canvas canvas){
-        exporter.saveImageToPNG(canvas);
+    public boolean exportGraphToPNG(Canvas canvas){
+        boolean saveSucces = exporter.saveImageToPNG(canvas);
+        return saveSucces;
     }
     
     public String showCircuitEuler(){

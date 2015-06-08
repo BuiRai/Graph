@@ -278,7 +278,15 @@ public class Principal extends javax.swing.JFrame{
     }//GEN-LAST:event_showOperations
 
     private void exportGraph(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportGraph
-        controllerGraph.exportGraphToPNG(drawArea);
+        if (controllerGraph.exportGraphToPNG(drawArea)) {
+            JOptionPane.showMessageDialog(this, 
+                    "La imagen se ha guardado correctamente", 
+                    "Guardado exitosso", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                    "Error al guardar la imagen", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_exportGraph
 
     /**
