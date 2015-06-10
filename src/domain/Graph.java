@@ -104,16 +104,19 @@ public class Graph {
         String informationEuler = "";
         EulerCircuit eulerCircuit = new EulerCircuit(numberOfNodes, adjacencyMatrix);
         nodesPath = eulerCircuit.printEulerTour();
-        System.out.println("EL MIO: JOJOJOJ");
-        for (int i = 0; i < nodesPath.size(); i++) {
-            String nodeSource = "Fuente: " + 
-                    nodes.get((int)nodesPath.get(i)).getNameNode() + " --> ";
-            System.out.print(nodeSource);
-            i++;
-            String nodeDestiny = "Destino: " + 
-                    nodes.get((int)nodesPath.get(i)).getNameNode() + "\n";
-            System.out.print(nodeDestiny);
-            informationEuler = informationEuler + nodeSource + nodeDestiny;
+        if (!nodesPath.isEmpty()) {
+            for (int i = 0; i < nodesPath.size(); i++) {
+                String nodeSource = "Fuente: " + 
+                        nodes.get((int)nodesPath.get(i)).getNameNode() + " --> ";
+                System.out.print(nodeSource);
+                i++;
+                String nodeDestiny = "Destino: " + 
+                        nodes.get((int)nodesPath.get(i)).getNameNode() + "\n";
+                System.out.print(nodeDestiny);
+                informationEuler = informationEuler + nodeSource + nodeDestiny;
+            }
+        }else{
+            informationEuler = "No se ha encontrado un circuito de Euler";
         }
         return informationEuler;
     }
@@ -124,8 +127,12 @@ public class Graph {
         int[][] adjacencyMatrx = buildAdjacencyMatrix();
         HamiltonCircuit hamiltonCircuit = new HamiltonCircuit();
         nodesHamilton = hamiltonCircuit.findHamiltonianCycle(adjacencyMatrx);
-        for (Object idNode : nodesHamilton) {
-            nodesPath += this.nodes.get((int)idNode).getNameNode() +  " -> ";
+        if (!nodesHamilton.isEmpty()) {
+            for (Object idNode : nodesHamilton) {
+                nodesPath += this.nodes.get((int)idNode).getNameNode() +  " -> ";
+            }
+        }else{
+            nodesPath = "No se ha encontrado un circuito de Hamilton";
         }
         return nodesPath;
     }

@@ -64,7 +64,6 @@ public class EulerCircuit {
                 printEulerTourUtil(destination);
             }	
         }
-        System.out.println("printEulerTourUtil");
         System.out.println(nodesPath);
         return nodesPath;
     }
@@ -76,7 +75,6 @@ public class EulerCircuit {
             vertex = oddDegreeVertex();
         }
         listOfNodes = printEulerTourUtil(vertex);
-        System.out.println("En printEulerTour");
         System.out.println(listOfNodes);
         return listOfNodes;
     }

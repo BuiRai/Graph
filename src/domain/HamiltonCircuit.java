@@ -86,9 +86,7 @@ public class HamiltonCircuit {
         for (int i = 0; i <= V; i++){
             System.out.print(path[i % V] +" ");
             nodes.add(i%V);
-            
         }
-        System.out.println("Clase circuito: "+nodes);
         return nodes;
     }     
 }
