@@ -127,6 +127,7 @@ public class Graph {
         int[][] adjacencyMatrx = buildAdjacencyMatrix();
         HamiltonCircuit hamiltonCircuit = new HamiltonCircuit();
         nodesHamilton = hamiltonCircuit.findHamiltonianCycle(adjacencyMatrx);
+        
         if (!nodesHamilton.isEmpty()) {
             for (Object idNode : nodesHamilton) {
                 nodesPath += this.nodes.get((int)idNode).getNameNode() +  " -> ";

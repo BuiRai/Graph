@@ -16,6 +16,10 @@ public class HamiltonCircuit {
     private int V, pathCount;
     private int[] path;     
     private int[][] graph;
+    
+    public HamiltonCircuit(){
+        
+    }
  
     /** Function to find cycle
      * @param g the matrix
@@ -84,9 +88,10 @@ public class HamiltonCircuit {
     public ArrayList display(){
         ArrayList nodes = new ArrayList();
         for (int i = 0; i <= V; i++){
-            System.out.print(path[i % V] +" ");
-            nodes.add(i%V);
+            System.out.print(path[i % V] +", ");
+            nodes.add(path[i % V]);
         }
+        System.out.println("Estos son los nodos de la clase Graph: " + nodes);
         return nodes;
     }     
 }
