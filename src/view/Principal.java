@@ -6,6 +6,7 @@
 package view;
 
 import controller.ControllerGraph;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -262,10 +263,7 @@ public class Principal extends javax.swing.JFrame{
                     "Debes ingresar un numero entero en el peso de la arista", 
                     "Error", JOptionPane.WARNING_MESSAGE);
         }
-        
     }//GEN-LAST:event_addEdge
-    
-    
     
     private void showWindowOperatons(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showWindowOperatons
         AdjacencyMatrix operationsGraph = new AdjacencyMatrix(controllerGraph);
