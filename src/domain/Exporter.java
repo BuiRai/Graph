@@ -16,23 +16,62 @@ import javax.imageio.ImageIO;
  * @author crhistian
  */
 public class Exporter extends Canvas{
-    
+    private static String urlFolder = "Imágenes";
     public Exporter() {
         
     }
     
+    private void createFolder(){
+        File folder = new File(urlFolder);
+        if (!folder.exists()) {
+            System.out.println("El directorio no existe");
+            folder.mkdir();
+        }else{
+            System.out.println("El directorio ya existe");
+        }
+    }
+    
+    private int getNewIdGraph(){
+        File folder = new File(urlFolder);
+        int newNumber = 0;
+        if (folder.exists()) {
+            File[] files = folder.listFiles();
+            System.out.println("Lo que hay dentro del Folder es: ");
+            System.out.print("[ ");
+            for (File file : files) {
+                System.out.print(file.getName() + " | ");
+            }
+            System.out.print(" ]");
+            /*If exist files inside the folder*/
+            if (files.length>0) {
+                for (File file : files) {
+                    String nameWithFormat = file.getName();
+                    String nameWithoutFormat = nameWithFormat.replaceAll(".png", "");
+                    String numero = nameWithoutFormat.substring(5);
+                    int lastNumber = Integer.parseInt(numero);
+                    lastNumber++;
+                    newNumber = lastNumber;
+                    System.out.println("Último número: " + newNumber);
+                }
+            }
+        }
+        return newNumber;
+    }
+    
     public boolean saveImageToPNG(Canvas canvas){
+        createFolder();
         boolean saveSucces = false;
         BufferedImage image = new BufferedImage(canvas.getWidth(), 
                 canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 =(Graphics2D)image.getGraphics();
         
         //Graphics2D g2 =(Graphics2D)image.getGraphics();
-        System.out.println("hola2");
 	canvas.paint(g2);
-        System.out.println("hola3");
 	try {
-            ImageIO.write(image, "png", new File("canvas.png"));
+            int idGraphImage = getNewIdGraph();
+            String url = urlFolder+"\\Grafo"+idGraphImage+".png";
+            System.out.println("URL: " + url);
+            ImageIO.write(image, "png", new File(urlFolder + "\\Grafo" + idGraphImage + ".png"));
             saveSucces = true;
 	} catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
