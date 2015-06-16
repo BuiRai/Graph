@@ -90,5 +90,10 @@ public class ControllerGraph {
         return nodesPath;
     }
     
+    public void newGraph(){
+        graph = null;
+        graph = new Graph();
+    }
+    
 }
 

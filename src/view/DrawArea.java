@@ -49,58 +49,68 @@ public class DrawArea extends Canvas implements MouseListener{
         idNode = 0;
         setSize(680, 250);
         setBackground(Color.BLACK);
-        printElementsFronPanelElement();
+        printElementsFromPanelElement();
         addMouseListener(this);
     }
     
     @Override
-    public void paint(Graphics g) {
-        paintNodes(g);
-        paintEdges(g);
+    public void paint(Graphics graphics) {
+        paintNodes(graphics);
+        paintEdges(graphics);
+        
     }
     
-    public void paintNodes(Graphics g){
+    public void resetGraph(){
+        nodes = null;
+        edges = null;
+        nodes = new ArrayList<>();
+        edges = new ArrayList<>();
+        abcLetter = 'A';
+        currentAxisX = 0;
+        currentAxisY = 0;
+        idNode = 0;
+        currentNameNode = "Name";
+    }
+    
+    private void paintNodes(Graphics graphics){
         /*Print all the nodes on the Canvas*/
         for (Node node : nodes) {
-            g.setColor(Color.GREEN);
-            g.fillOval(node.getAxisX(), node.getAxisY(), 16, 16);
-            g.setColor(Color.WHITE);
-            g.drawString(node.getNameNode(), node.getAxisX(), node.getAxisY());
+            graphics.setColor(Color.GREEN);
+            graphics.fillOval(node.getAxisX(), node.getAxisY(), 16, 16);
+            graphics.setColor(Color.WHITE);
+            graphics.drawString(node.getNameNode(), node.getAxisX(), node.getAxisY());
         }
     }
     
-    public void paintEdges(Graphics g){
+    private void paintEdges(Graphics graphics){
         /*Print all the edges on the Canvas*/
         for (Edge edge : edges) {
-            g.setColor(Color.CYAN);
+            graphics.setColor(Color.CYAN);
             Node nodeIn = edge.getNodeIn();
             Node nodeOut = edge.getNodeOut();
             /*Si no es un lazo*/
             if (edge.getNodeIn() != edge.getNodeOut()) {
-//              Node nodeIn = edge.getNodeIn();
-                g.drawLine(nodeIn.getAxisX()+8, nodeIn.getAxisY()+8,
+                graphics.drawLine(nodeIn.getAxisX()+8, nodeIn.getAxisY()+8,
                     nodeOut.getAxisX()+8, nodeOut.getAxisY()+8);
 
                 /*Escribir el peso de la arista*/
-                g.setColor(Color.WHITE);
+                graphics.setColor(Color.WHITE);
                 String valueEdge = String.valueOf(edge.getValueEdge());
                 int[] coordenates = getNewCoordenates(nodeIn, nodeOut);
                 int axisX = coordenates[0];
                 int axisY = coordenates[1];
-                g.drawString(valueEdge, axisX, axisY);
+                graphics.drawString(valueEdge, axisX, axisY);
                 
             /*Si es un lazo*/
             }else{
-//                Node nodeIn = edge.getNodeIn();
-//                Node nodeOut = edge.getNodeOut();
                 /*The number 8 is for centering the ends of the edge, cause the diameter
                 of a node is 16.*/
-                g.drawOval(nodeIn.getAxisX()-30, nodeIn.getAxisY()-5, 45, 25);
+                graphics.drawOval(nodeIn.getAxisX()-30, nodeIn.getAxisY()-5, 45, 25);
                 
                 /*Escribir el peso de la arista*/
-                g.setColor(Color.WHITE);
+                graphics.setColor(Color.WHITE);
                 String valueEdge = String.valueOf(edge.getValueEdge());
-                g.drawString(valueEdge, nodeIn.getAxisX()-40, nodeIn.getAxisY()+10);
+                graphics.drawString(valueEdge, nodeIn.getAxisX()-40, nodeIn.getAxisY()+10);
             }
         }
     }
@@ -114,7 +124,7 @@ public class DrawArea extends Canvas implements MouseListener{
         return coordenates;
     }
     
-    private void printElementsFronPanelElement(){
+    private void printElementsFromPanelElement(){
         /*Solo para imprimir los componentes del panel de elementos*/
         Component[] components = elementsPanel.getComponents();
         for (Component component : components) {
