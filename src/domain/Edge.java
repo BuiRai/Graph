@@ -10,10 +10,6 @@ package domain;
  * @author crhistian
  */
 public class Edge {
-    private String nameEdge;
-    private int valueEdge;
-    private Node nodeIn;
-    private Node nodeOut;
 
     public Edge() {
     }
@@ -49,10 +45,13 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "Edge{" + " valueEdge=" + valueEdge + ", nodeIn=" + nodeIn.getNameNode() + 
-                ", nodeOut=" + nodeOut.getNameNode() + '}';
+        return "Edge{" + " valueEdge=" + valueEdge + ", nodeIn=" 
+            + nodeIn.getNameNode() + ", nodeOut=" + nodeOut.getNameNode() + '}';
     }
     
-    
+    private String nameEdge;
+    private int valueEdge;
+    private Node nodeIn;
+    private Node nodeOut;
     
 }

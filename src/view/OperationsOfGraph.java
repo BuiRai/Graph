@@ -13,7 +13,7 @@ import controller.ControllerGraph;
  * @author crhistian
  */
 public class OperationsOfGraph extends javax.swing.JFrame {
-    ControllerGraph controllerGraph;
+    
     /**
      * Creates new form OperationsOfGraph
      */
@@ -249,6 +249,7 @@ public class OperationsOfGraph extends javax.swing.JFrame {
         shortenedPathArea.setText(shortenedPath);
     }//GEN-LAST:event_showShortenedPath
 
+    private ControllerGraph controllerGraph;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EulerCircuitButton;

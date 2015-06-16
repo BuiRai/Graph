@@ -13,8 +13,6 @@ import java.util.LinkedList;
  * @author crhistian
  */
 public class Graph {
-    private ArrayList<Node> nodes;
-    private ArrayList<Edge> edges;
 
     public Graph(ArrayList<Node> nodes, ArrayList<Edge> edges){
         this.nodes = nodes;
@@ -137,5 +135,8 @@ public class Graph {
         }
         return nodesPath;
     }
+    
+    private ArrayList<Node> nodes;
+    private ArrayList<Edge> edges;
 
 }

@@ -12,7 +12,7 @@ import controller.ControllerGraph;
  * @author crhistian
  */
 public class AdjacencyMatrix extends javax.swing.JFrame {
-    ControllerGraph controllerGraph;
+    
     /**
      * Creates new form OperationsGraphs
      */
@@ -111,7 +111,7 @@ public class AdjacencyMatrix extends javax.swing.JFrame {
         adjacencyMatrixArea.setText(adjacencyMatrix);
     }//GEN-LAST:event_showAdjaccencyMatrix
 
-
+    private ControllerGraph controllerGraph;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea adjacencyMatrixArea;
     private javax.swing.JButton jButton1;

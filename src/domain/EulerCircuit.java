@@ -12,9 +12,6 @@ import java.util.ArrayList;
  * @author crhistian
  */
 public class EulerCircuit {
-    private int[][] adjacencyMatrix;
-    private int numberOfNodes; 
-    private ArrayList nodesPath;
  
     public EulerCircuit (int numberOfNodes, int[][] adjacencyMatrix){
         this.numberOfNodes = numberOfNodes;
@@ -125,4 +122,9 @@ public class EulerCircuit {
         adjacencyMatrix[source][destination] = 1;
         adjacencyMatrix[destination][source] = 1;
     }
+    
+    private int[][] adjacencyMatrix;
+    private int numberOfNodes; 
+    private ArrayList nodesPath;
+    
 }

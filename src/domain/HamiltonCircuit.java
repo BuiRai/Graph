@@ -13,9 +13,6 @@ import java.util.Arrays;
  * @author crhistian
  */
 public class HamiltonCircuit {
-    private int V, pathCount;
-    private int[] path;     
-    private int[][] graph;
     
     public HamiltonCircuit(){
         
@@ -43,6 +40,7 @@ public class HamiltonCircuit {
         }
         return nodes;
     }
+    
     /** function to find paths recursively **/
     public void solve(int vertex) throws Exception{
         /** solution **/
@@ -72,7 +70,8 @@ public class HamiltonCircuit {
                 path[--pathCount] = -1;                    
             }
         }
-    }    
+    }   
+    
     /** function to check if path is already selected
      * @param v
      * @return boolean **/
@@ -93,5 +92,10 @@ public class HamiltonCircuit {
         }
         System.out.println("Estos son los nodos de la clase Graph: " + nodes);
         return nodes;
-    }     
+    }    
+    
+    private int V, pathCount;
+    private int[] path;     
+    private int[][] graph;
+    
 }

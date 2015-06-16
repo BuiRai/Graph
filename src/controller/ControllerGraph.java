@@ -16,8 +16,6 @@ import java.awt.Canvas;
  * @author crhistian
  */
 public class ControllerGraph {
-    private Graph graph;
-    private Exporter exporter;
 
     public ControllerGraph() {
         graph = new Graph();
@@ -94,6 +92,9 @@ public class ControllerGraph {
         graph = null;
         graph = new Graph();
     }
+    
+    private Graph graph;
+    private Exporter exporter;
     
 }
 

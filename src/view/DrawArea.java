@@ -23,18 +23,8 @@ import javax.swing.JTextField;
  * @author crhistian
  */
 public class DrawArea extends Canvas implements MouseListener{
-    private JPanel elementsPanel;
-    private ArrayList<Node> nodes;
-    private ArrayList<Edge> edges;
-    private ControllerGraph controllerGraph;
-    private int currentAxisX;
-    private int currentAxisY;
-    private String currentNameNode;
-    private char abcLetter;
-    private int idNode;
     
-    public DrawArea(){
-        
+    public DrawArea(){    
     }
     
     public DrawArea(JPanel elementsPanel, ControllerGraph controllerGraph) {
@@ -197,23 +187,33 @@ public class DrawArea extends Canvas implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+        System.out.println("Aqui un evento");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+        System.out.println("Aqui un evento");
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+        System.out.println("Aqui un evento");
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+        System.out.println("Aqui un evento");
     }
+    
+    private JPanel elementsPanel;
+    private ArrayList<Node> nodes;
+    private ArrayList<Edge> edges;
+    private ControllerGraph controllerGraph;
+    private int currentAxisX;
+    private int currentAxisY;
+    private String currentNameNode;
+    private char abcLetter;
+    private int idNode;
     
 }
 

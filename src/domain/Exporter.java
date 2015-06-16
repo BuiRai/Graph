@@ -16,9 +16,8 @@ import javax.imageio.ImageIO;
  * @author crhistian
  */
 public class Exporter extends Canvas{
-    private static String urlFolder = "Imágenes";
-    public Exporter() {
-        
+    
+    public Exporter() {    
     }
     
     private void createFolder(){
@@ -78,5 +77,7 @@ public class Exporter extends Canvas{
 	}
         return saveSucces;
     }
+    
+    private static String urlFolder = "Imágenes";
     
 }
