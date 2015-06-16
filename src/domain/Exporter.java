@@ -45,12 +45,15 @@ public class Exporter extends Canvas{
             if (files.length>0) {
                 for (File file : files) {
                     String nameWithFormat = file.getName();
-                    String nameWithoutFormat = nameWithFormat.replaceAll(".png", "");
-                    String numero = nameWithoutFormat.substring(5);
-                    int lastNumber = Integer.parseInt(numero);
-                    lastNumber++;
-                    newNumber = lastNumber;
-                    System.out.println("Último número: " + newNumber);
+                    /*Este if es para saltarse el archivo Thumbs.db*/
+                    if (!nameWithFormat.equals("Thumbs.db")) {
+                        String nameWithoutFormat = nameWithFormat.replaceAll(".png", "");
+                        String numero = nameWithoutFormat.substring(5);
+                        int lastNumber = Integer.parseInt(numero);
+                        lastNumber++;
+                        newNumber = lastNumber;
+                        System.out.println("Último número: " + newNumber);
+                    }
                 }
             }
         }
