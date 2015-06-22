@@ -40,6 +40,25 @@ public class Graph {
         return edges;
     }
     
+    public void deleteNode(String name){
+        
+        for (int indexEdge = 0; indexEdge < edges.size(); indexEdge++) {
+            Edge currentEdge = edges.get(indexEdge);
+            if ((currentEdge.getNodeIn().getNameNode().equalsIgnoreCase(name))||
+                 currentEdge.getNodeOut().getNameNode().equalsIgnoreCase(name)) {
+                edges.remove(indexEdge);
+            }
+        }
+        
+        for (int indexNode = 0; indexNode < nodes.size(); indexNode++) {
+            String currentName = nodes.get(indexNode).getNameNode();
+            if (name.equalsIgnoreCase(currentName)) {
+                nodes.remove(indexNode);
+                break;
+            }
+        }
+    }
+    
     public Node foundNode(String nameNode){
         Node node = null;
         for( Node currentNode : nodes ){
@@ -69,15 +88,35 @@ public class Graph {
         
         int numRow;
         int numCol;
-        for (Edge edge : edges) {
-            numRow = edge.getNodeIn().getIdNode();
-            numCol = edge.getNodeOut().getIdNode();
+        for (int indexEdge = 0; indexEdge < edges.size(); indexEdge++) {
+            Edge edge = edges.get(indexEdge);
+            Node nodeIn = edge.getNodeIn();
+            Node nodeOut = edge.getNodeOut();
+            numRow = indexEdge;
+            numCol = indexEdge;
+            for (int indexNode = 0; indexNode < nodes.size(); indexNode++) {
+                Node currentNonde = nodes.get(indexNode);
+                if (currentNonde.getNameNode().equalsIgnoreCase(nodeIn.getNameNode())) {
+                    numRow = indexNode;
+                }
+                if (currentNonde.getNameNode().equalsIgnoreCase(nodeOut.getNameNode())) {
+                    numCol = indexNode;
+                }
+            }
             
-            /*It also puts in reverse order because the adjacency matrix 
-            is symmetrical*/
             adjacencyMatrix[numRow][numCol] = 1;
             adjacencyMatrix[numCol][numRow] = 1;
         }
+        
+//        for (Edge edge : edges) {
+//            numRow = edge.getNodeIn().getIdNode();
+//            numCol = edge.getNodeOut().getIdNode();
+//            
+//            /*It also puts in reverse order because the adjacency matrix 
+//            is symmetrical*/
+//            adjacencyMatrix[numRow][numCol] = 1;
+//            adjacencyMatrix[numCol][numRow] = 1;
+//        }
         
         return adjacencyMatrix;
     }

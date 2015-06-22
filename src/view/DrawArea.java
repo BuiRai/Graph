@@ -62,6 +62,24 @@ public class DrawArea extends Canvas implements MouseListener{
         currentNameNode = "Name";
     }
     
+    public void deleteNode(String name){
+        for (int indexEdge = 0; indexEdge < edges.size(); indexEdge++) {
+            Edge currentEdge = edges.get(indexEdge);
+            if ((currentEdge.getNodeIn().getNameNode().equalsIgnoreCase(name))||
+                 currentEdge.getNodeOut().getNameNode().equalsIgnoreCase(name)) {
+                edges.remove(indexEdge);
+            }
+        }
+        
+        for (int indexNode = 0; indexNode < nodes.size(); indexNode++) {
+            String currentName = nodes.get(indexNode).getNameNode();
+            if (name.equalsIgnoreCase(currentName)) {
+                nodes.remove(indexNode);
+                break;
+            }
+        }
+    }
+    
     private void paintNodes(Graphics graphics){
         /*Print all the nodes on the Canvas*/
         for (Node node : nodes) {

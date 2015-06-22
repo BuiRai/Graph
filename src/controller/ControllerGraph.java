@@ -27,6 +27,10 @@ public class ControllerGraph {
         graph.addNode(node);
     }
     
+    public void deleteNode(String name){
+        graph.deleteNode(name);
+    }
+    
     public void addNodeToGraph(Node node){
         graph.addNode(node);
     }
