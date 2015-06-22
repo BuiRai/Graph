@@ -58,7 +58,7 @@ public class EulerCircuit {
                 nodesPath.add(vertex-1);
                 nodesPath.add(destination-1);
                 removeEdge(vertex, destination);
-                printEulerTourUtil(destination);
+                printEulerTourUtil(destination); 
             }	
         }
         System.out.println(nodesPath);
